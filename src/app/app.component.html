@@ -1,20 +1,82 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="form-group"><mat-checkbox>subscribe</mat-checkbox></div>
+<div class="form-group">
+<mat-radio-group>
+  <mat-radio-button value="1">option1</mat-radio-button>
+  <mat-radio-button value="2">option2</mat-radio-button>
+</mat-radio-group>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="form-group">
+  <h4>Basic mat-select</h4>
+<mat-form-field>
+  <mat-label>Favorite food</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+<div class="form-group">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Favorite food</mat-label>
+      <input ngModel #username="ngModel" name="username" matInput placeholder="Ex. Pizza" value="Sushi">
+      <mat-hint>please enter uniqe name</mat-hint>
+      <span matSuffix>@domain.com</span>
+      <mat-error *ngIf="username.invalid &&  username.errors.required">this is required</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput matTextareaAutosize placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+  </form>
+  
+</div>
+<div class="form-group">
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" (focus)="picker.open()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker touchUi="true"></mat-datepicker>
+  </mat-form-field>
+</div>
+<div>
+  <mat-icon>add_alert</mat-icon>
+</div>
+<div>
+  <button mat-raised-button>button1</button>
+  <button color="primary" mat-raised-button>primary</button>
+  <button color="accent" mat-raised-button>accent</button>
+  <button color="warn" mat-raised-button>warn</button>
+  <button mat-fab>warn</button>
+  <button mat-button>button2</button>
+</div>
+<div>
+  <mat-chip-list>
+    <mat-chip *ngFor="let category of categories" [selected]="category.selected"
+              (click)="selectCategory(category)">
+              {{category.name}}
+      </mat-chip>
+  </mat-chip-list>
+</div>
+<div>
+  <mat-progress-spinner mode="determinate" [value]="progress"></mat-progress-spinner>
+  <mat-progress-spinner *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
+</div>
+<div>
+  <span matTooltip="Here is my tool tip" matTooltipPosition="right">Some Text</span>
+</div>
+<div>
+  <mat-tab-group>
+    <mat-tab label="Billing">Content of The Billing TAB</mat-tab>
+    <mat-tab label="Shipping">Content of The Shipping TAB</mat-tab>
+  </mat-tab-group>
+</div>
+<div>
+  <button mat-raised-button (click)="openDialog()">Open Dialog</button>
+</div>
+<div>
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+</div>
